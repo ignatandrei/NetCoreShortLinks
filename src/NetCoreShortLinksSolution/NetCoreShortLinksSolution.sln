@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCore7ShortLinksWebAPI", "NetCore7ShortLinksWebAPI\NetCore7ShortLinksWebAPI.csproj", "{63BC4543-DCC7-44A9-A7B3-676ED3F42105}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCore7ShortLinks", "NetCore7ShortLinks\NetCore7ShortLinks.csproj", "{1EEF4C85-A4E3-4F7E-8253-ABE05BBFD898}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63BC4543-DCC7-44A9-A7B3-676ED3F42105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63BC4543-DCC7-44A9-A7B3-676ED3F42105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63BC4543-DCC7-44A9-A7B3-676ED3F42105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63BC4543-DCC7-44A9-A7B3-676ED3F42105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EEF4C85-A4E3-4F7E-8253-ABE05BBFD898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EEF4C85-A4E3-4F7E-8253-ABE05BBFD898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EEF4C85-A4E3-4F7E-8253-ABE05BBFD898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EEF4C85-A4E3-4F7E-8253-ABE05BBFD898}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB9B8F20-4D57-459B-8A65-F8B2A35B0FB8}
+	EndGlobalSection
+EndGlobal
