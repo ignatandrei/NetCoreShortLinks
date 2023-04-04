@@ -2,11 +2,18 @@
 
 public class ShortLinks
 {
+    internal readonly ShortUrlOptions opt;
+
+    public ShortLinks(ShortUrlOptions opt)
+    {
+        this.opt = opt;
+    }
     private Dictionary<string,ShortLinksData> ShortLinksData { get; } = new();
     public void Add( ShortLinksData data)
     {
         if (data.Url == null)
             return;
+        data.ApplicationName ??= opt.AppName;
         if(!ShortLinksData.ContainsKey(data.Url))
             ShortLinksData.Add(data.Url,data);
     }

@@ -23,10 +23,9 @@ public class ShortUrlMiddleware : IMiddleware
         if (resp.ContentType != "text/html") return;
         ShortLinksData data = new();
         data.Url = reqUrl;
-        data.ApplicationName= opt.AppName;
         if (context.User?.Identity?.IsAuthenticated == true)
             data.UserName = context.User.Identity.Name;
-        data.ShortUrl =Guid.NewGuid().ToString("N");
+        
         shortLinks.Add(data);
 
 

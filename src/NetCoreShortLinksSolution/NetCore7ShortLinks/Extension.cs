@@ -1,16 +1,9 @@
 ﻿
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
-
 namespace NetCore7ShortLinks;
-public class ShortUrlOptions
-{
-    public string? AppName { get; set; }
-}
 public static class Extension
 {
 
-    public static void AddShortUrl(this IServiceCollection services, ShortUrlOptions? opt)
+    public static void AddShortUrl(this IServiceCollection services, ShortUrlOptions? opt=null)
     {
         opt ??=new ShortUrlOptions();
         services.AddSingleton(opt);
@@ -20,9 +13,9 @@ public static class Extension
     public static IEndpointRouteBuilder MapShortUrlEndpoints(this IEndpointRouteBuilder endpoints)
     {
         var sp = endpoints.ServiceProvider;
-        endpoints.MapGet("/short/goto/{name:alpha}", (HttpContext context, string name) =>
+        var links = sp.GetRequiredService<ShortLinks>();
+        endpoints.MapGet("/short/goto/{name}", (HttpContext context, string name) =>
         {
-            var links = sp.GetRequiredService<ShortLinks>();
             var link = links.FindShortUrl(name);
             if (link != null)
             {
@@ -32,11 +25,10 @@ public static class Extension
             //LINK IS NULL
             context.Response.WriteAsJsonAsync("not a valid short endpoint");
 
-        });
+        }).WithTags("ShortUrl");
 
         endpoints.MapGet("/short/list/", (HttpContext context) =>
         {
-            var links = sp.GetRequiredService<ShortLinks>();
             ShortLinksData[] data;
             if (context.User?.Identity?.IsAuthenticated == true)
             {
@@ -50,11 +42,33 @@ public static class Extension
             }
             context.Response.WriteAsJsonAsync(data);
 
-        });
+        }).WithTags("ShortUrl");
+
+        endpoints.MapGet("/short/add/{url:alpha}/", (HttpContext context,string url) =>
+        {
+            ShortLinksData data=new();
+            data.Url = url;
+            data.ApplicationName = url;
+            links.Add(data);
+            context.Response.WriteAsJsonAsync(data);
+
+        }).WithTags("ShortUrl");
+
+        endpoints.MapGet("/short/addAuth/{url:alpha}/", (HttpContext context, string url) =>
+        {
+            ShortLinksData data = new();
+            data.Url = url;
+            data.ApplicationName = url;
+            links.Add(data);
+            context.Response.WriteAsJsonAsync(data);
+
+        }).WithTags("ShortUrl").RequireAuthorization(links.opt.AuthPolicy);
+
+
         return endpoints;
     }
     public static IApplicationBuilder UseShortUrl(this IApplicationBuilder app)
-    {
+    { 
         app.UseMiddleware<ShortUrlMiddleware>();
         
         return app;
