@@ -1,5 +1,5 @@
 ﻿
-namespace NetCore7ShortLinks;
+namespace NetCoreShortLinks;
 public static class Extension
 {
 
@@ -27,7 +27,7 @@ public static class Extension
 
         }).WithTags("ShortUrl");
 
-        endpoints.MapGet("/short/list/", (HttpContext context) =>
+        endpoints.MapGet("/short/list/json", (HttpContext context) =>
         {
             ShortLinksData[] data;
             if (context.User?.Identity?.IsAuthenticated == true)

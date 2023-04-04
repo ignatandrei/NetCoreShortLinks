@@ -1,4 +1,4 @@
-﻿namespace NetCore7ShortLinks;
+﻿namespace NetCoreShortLinks;
 
 public class ShortLinks
 {

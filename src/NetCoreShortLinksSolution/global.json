@@ -1,0 +1,13 @@
+{
+  "scriptShell": "pwsh", 
+  "scripts": {
+	"watch": "dotnet watch --project NetCore7ShortLinks/NetCore7ShortLinks.csproj",
+    "build": "dotnet build --configuration Release",
+    "test": "dotnet test --configuration Release",
+    "ci": "dotnet r build && dotnet r test",
+	"make_readme":"dotnet pwsh readme.ps1",
+	"prepack":"dotnet r make_readme && dotnet r build",
+	"pack": "dotnet pack --configuration release --include-source  --include-symbols --no-build NetCore7ShortLinks/NetCore7ShortLinks.csproj"
+	
+ }
+}

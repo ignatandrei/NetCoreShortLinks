@@ -1,4 +1,4 @@
-using NetCore7ShortLinks;
+using NetCoreShortLinks;
 
 var builder = WebApplication.CreateBuilder(args);
 

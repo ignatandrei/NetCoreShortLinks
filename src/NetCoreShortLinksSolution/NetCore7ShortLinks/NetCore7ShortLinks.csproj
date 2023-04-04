@@ -16,4 +16,36 @@
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
+
+	<ItemGroup>
+		<None Include="../../../README.md" Pack="true" PackagePath="\" />
+		<None Include="../readme.txt" Pack="true" PackagePath="\" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+	</ItemGroup>
+<PropertyGroup>
+		<Version>7.2023.402.1715</Version>
+		<Authors>Andrei Ignat</Authors>
+		
+		<Description>Add short url capabilities to every .net core project</Description>
+		<Title>NetCore7ShortLinks</Title>
+		<PackageId>NetCore7ShortLinks</PackageId>
+		<PackageTags>C#;.NET;ASP.NET Core;</PackageTags>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/ignatandrei/NetCoreShortLinks</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/ignatandrei/NetCoreShortLinks</PackageProjectUrl>
+		<RepositoryType>GIT</RepositoryType>
+		<Copyright>MIT</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<IncludeSymbols>true</IncludeSymbols>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<Deterministic>true</Deterministic>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<DebugType>embedded</DebugType>
+
+	</PropertyGroup>
+	<!--<PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>-->
+	
 </Project>
