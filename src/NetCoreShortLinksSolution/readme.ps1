@@ -4,7 +4,7 @@ Write-Host $path
 
 $fileContent = gc $path
 
-Write-Host $fileContent.Length
+# Write-Host $fileContent.Length
 
 For($i=0;$i -lt $fileContent.Length ; $i++){
     $line = $fileContent[$i];
@@ -23,6 +23,44 @@ For($i=0;$i -lt $fileContent.Length ; $i++){
 
 $fileContent |Set-Content $path
 
-$md = ConvertFrom-Markdown -AsVT100EncodedString -Path $path
-$md
-$md.VT100EncodedString | Out-File -Encoding utf8 .\readme.txt
+$md = ConvertFrom-Markdown -Path $path
+# $md
+$md.Html | Out-File -Encoding utf8 .\readme.txt
+
+$fileContent = gc "readme.txt"
+For($i=0;$i -lt $fileContent.Length ; $i++){
+    $line = $fileContent[$i];
+	Write-Host $line
+	if($line -match '</h1>'){
+		
+		$line=$line -replace '(<h1.*">)' 
+		$line=$line.replace('</h1>','')
+	
+	}
+	if($line -match '</p>'){
+		$line=$line.replace('</p>','')
+		$line=$line -replace '(<p.*">)'
+		$line=$line.replace('<p>','')
+	}
+	
+	if($line -match '<pre><code class="language-csharp">'){
+		
+		$line=""
+		
+	}
+	if($line -match '</code></pre>'){
+		
+		$line=""
+		
+	}
+	if($line -match '</a>'){
+	
+		$line=$line.replace('</a>','')
+		
+	}
+	Write-Host $line
+	$fileContent[$i]=$line;
+	
+}
+
+$fileContent | Out-File -Encoding utf8 .\readme.txt
