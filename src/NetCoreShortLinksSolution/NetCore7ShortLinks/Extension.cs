@@ -40,10 +40,10 @@ public static class Extension
             ShortLinksData[] data = links.From(nameUser);            
             context.Response.WriteAsJsonAsync(data);
 
-        }).RequireAuthorization().WithTags("ShortUrl");
+        }).RequireAuthorization(links.opt.AuthPolicy).WithTags("ShortUrl");
 
 
-        endpoints.MapGet("/short/add/{url:alpha}/", (HttpContext context,string url) =>
+        endpoints.MapGet("/short/add/noAuth/{url:alpha}/", (HttpContext context,string url) =>
         {
             ShortLinksData data=new();
             data.Url = url;
@@ -53,7 +53,7 @@ public static class Extension
 
         }).WithTags("ShortUrl");
 
-        endpoints.MapGet("/short/addAuth/{url:alpha}/", (HttpContext context, string url) =>
+        endpoints.MapGet("/short/add/auth/{url:alpha}/", (HttpContext context, string url) =>
         {
             ShortLinksData data = new();
             data.Url = url;

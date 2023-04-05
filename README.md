@@ -4,9 +4,12 @@
 .NET Core short links -  short links for your site
 [![Build Nuget](https://github.com/ignatandrei/NetCoreShortLinks/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/ignatandrei/NetCoreShortLinks/actions/workflows/dotnet.yml)
 
+![Nuget](https://img.shields.io/nuget/dt/NetCore7ShortLinks?label=NetCore7ShortLinks&style=for-the-badge)
 
 
 # How to use it
+
+Install the package from https://www.nuget.org/packages/NetCore7ShortLinks
 
 Use the following code for .NET 7
 

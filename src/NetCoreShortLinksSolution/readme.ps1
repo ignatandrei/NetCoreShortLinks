@@ -31,6 +31,10 @@ $fileContent = gc "readme.txt"
 For($i=0;$i -lt $fileContent.Length ; $i++){
     $line = $fileContent[$i];
 	Write-Host $line
+	if($line -match 'https://img.shields.io'){
+		$line="";
+	}
+	
 	if($line -match 'alt="Build Nuget"'){
 		$line="";
 	}		
@@ -42,8 +46,9 @@ For($i=0;$i -lt $fileContent.Length ; $i++){
 	}
 	if($line -match '</p>'){
 		$line=$line.replace('</p>','')
-		$line=$line -replace '(<p.*">)'
 		$line=$line.replace('<p>','')
+		$line=$line -replace '(<p.*">)'
+		
 	}
 	if($line -match '<p>'){
 		$line=$line.replace('<p>','')
