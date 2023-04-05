@@ -6,12 +6,18 @@ public class ShortLinksData
     {
         CreatedDate = DateTime.UtcNow;
         ShortUrl = Guid.NewGuid().ToString("N");
+        LastAccessedDate = CreatedDate;
+    }
+    public string Key()
+    {
+        return UserName + (char)27 + Url;
     }
     public string? ApplicationName { get; set; }
     public string? UserName { get; set; }
     public string?  Url { get; set; }
     public string ShortUrl { get; set; }
     public DateTime CreatedDate { get; set; }
+    public DateTime LastAccessedDate { get; set; }
 
     public string? FullUrl
     {

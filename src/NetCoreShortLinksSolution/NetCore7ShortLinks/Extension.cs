@@ -84,6 +84,7 @@ public static class Extension
         endpoints.MapGet("/short/add/auth/{*url}/", (HttpContext context, string url) =>
         {
             ShortLinksData data = Construct(url, context.Request.GetDisplayUrl());
+            data.UserName = context.User?.Identity?.Name ?? "";
             links.Add(data);
             context.Response.WriteAsJsonAsync(data);
 
