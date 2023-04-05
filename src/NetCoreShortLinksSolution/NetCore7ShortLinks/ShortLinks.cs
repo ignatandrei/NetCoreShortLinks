@@ -23,7 +23,11 @@ public class ShortLinks
     {
         return ShortLinksData.Values.FirstOrDefault(it => it.ShortUrl == id);
     }
-    public ShortLinksData[] From(string user)
+    public ShortLinksData[] All()
+    {
+        return ShortLinksData.Values.ToArray();
+    }
+        public ShortLinksData[] From(string user)
     {
         var userLower=user.ToLowerInvariant();
         return ShortLinksData.Values
