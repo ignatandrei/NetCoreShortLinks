@@ -6,10 +6,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-	<PropertyGroup >
-		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-	</PropertyGroup>
-
+	
   <PropertyGroup >
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
   </PropertyGroup>
@@ -23,7 +20,7 @@
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
 	</ItemGroup>
 <PropertyGroup>
-		<Version>7.2023.402.1715</Version>
+		<Version>7.2023.405.0654</Version>
 		<Authors>Andrei Ignat</Authors>
 		
 		<Description>Add short url capabilities to every .net core project</Description>

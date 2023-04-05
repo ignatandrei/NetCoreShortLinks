@@ -38,3 +38,6 @@ jobs:
         retention-days: 1
 #    - name: Test
 #      run: dotnet test --no-build --verbosity normal
+    - name: push to nuget
+      run: |
+          dotnet nuget push ${{github.workspace}}/src/NetCoreShortLinksSolution/nugetPackages/*symb*.*pkg --api-key  ${{ secrets.NUGETAPIKEY }} --source https://api.nuget.org/v3/index.json
