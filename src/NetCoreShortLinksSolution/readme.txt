@@ -1,5 +1,6 @@
 NetCoreShortLinks
 .NET Core short links -  short links for your site
+
 How to use it
 Use the following code for .NET 7
 

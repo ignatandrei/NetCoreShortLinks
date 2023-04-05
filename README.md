@@ -1,6 +1,9 @@
+
 # NetCoreShortLinks
 
 .NET Core short links -  short links for your site
+[![Build Nuget](https://github.com/ignatandrei/NetCoreShortLinks/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/ignatandrei/NetCoreShortLinks/actions/workflows/dotnet.yml)
+
 
 
 # How to use it

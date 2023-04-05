@@ -31,6 +31,9 @@ $fileContent = gc "readme.txt"
 For($i=0;$i -lt $fileContent.Length ; $i++){
     $line = $fileContent[$i];
 	Write-Host $line
+	if($line -match 'alt="Build Nuget"'){
+		$line="";
+	}		
 	if($line -match '</h1>'){
 		
 		$line=$line -replace '(<h1.*">)' 
@@ -42,7 +45,9 @@ For($i=0;$i -lt $fileContent.Length ; $i++){
 		$line=$line -replace '(<p.*">)'
 		$line=$line.replace('<p>','')
 	}
-	
+	if($line -match '<p>'){
+		$line=$line.replace('<p>','')
+	}
 	if($line -match '<pre><code class="language-csharp">'){
 		
 		$line=""
