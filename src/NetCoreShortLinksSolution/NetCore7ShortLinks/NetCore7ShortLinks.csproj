@@ -25,7 +25,7 @@
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
 	</ItemGroup>
 <PropertyGroup>
-		<Version>7.2023.505.2100</Version>
+		<Version>7.2023.505.2231</Version>
 		<Authors>Andrei Ignat</Authors>
 		
 		<Description>Add short url capabilities to every .net core project</Description>
