@@ -8,11 +8,16 @@
 
 	
   <PropertyGroup >
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
+	<ItemGroup>
+		<!--<PackageReference Include="AMSWebAPI" Version="2022.5.25.1154" />-->
+		<PackageReference Include="AMS_Base" Version="2022.5.25.1154" />
+		<PackageReference Include="RSCG_AMS" Version="2022.5.25.1154" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<None Include="../../../README.md" Pack="true" PackagePath="\" />
@@ -20,7 +25,7 @@
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
 	</ItemGroup>
 <PropertyGroup>
-		<Version>7.2023.505.1956</Version>
+		<Version>7.2023.505.2100</Version>
 		<Authors>Andrei Ignat</Authors>
 		
 		<Description>Add short url capabilities to every .net core project</Description>

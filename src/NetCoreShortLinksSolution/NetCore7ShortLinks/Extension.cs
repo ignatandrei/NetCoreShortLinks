@@ -1,4 +1,8 @@
 ﻿
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System;
+using System.Runtime.CompilerServices;
+
 namespace NetCoreShortLinks;
 public static class Extension
 {
@@ -42,22 +46,44 @@ public static class Extension
 
         }).RequireAuthorization(links.opt.AuthPolicy).WithTags("ShortUrl");
 
-
-        endpoints.MapGet("/short/add/noAuth/{url:alpha}/", (HttpContext context,string url) =>
+        Func<string,string, ShortLinksData> Construct = (string urlToAdd, string urlRequest) =>
         {
-            ShortLinksData data=new();
-            data.Url = url;
-            data.ApplicationName = url;
+            var uriOrig = new Uri(urlRequest);
+            var auth = uriOrig.GetLeftPart(UriPartial.Authority);
+
+            string formattedUrl = urlToAdd;
+            try
+            {
+                //ensure it is an url
+                var uriToAdd = new Uri(urlToAdd);
+                var uri = new UriBuilder(uriToAdd);
+                uri.Host = uriOrig.Host;
+                uri.Scheme = uriOrig.Scheme;
+                uri.Port = uriOrig.Port;
+                formattedUrl = uri.ToString();
+            }
+            catch
+            {
+                //add initial
+                formattedUrl = auth + "/"+formattedUrl;
+            }
+            ShortLinksData data = new();
+            data.Url = formattedUrl;
+            return data;
+
+        };
+        endpoints.MapGet("/short/add/noAuth/{*url}/", (HttpContext context,string url) =>
+        {
+
+            ShortLinksData data=Construct(url, context.Request.GetDisplayUrl());
             links.Add(data);
             context.Response.WriteAsJsonAsync(data);
 
         }).WithTags("ShortUrl");
 
-        endpoints.MapGet("/short/add/auth/{url:alpha}/", (HttpContext context, string url) =>
+        endpoints.MapGet("/short/add/auth/{*url}/", (HttpContext context, string url) =>
         {
-            ShortLinksData data = new();
-            data.Url = url;
-            data.ApplicationName = url;
+            ShortLinksData data = Construct(url, context.Request.GetDisplayUrl());
             links.Add(data);
             context.Response.WriteAsJsonAsync(data);
 
