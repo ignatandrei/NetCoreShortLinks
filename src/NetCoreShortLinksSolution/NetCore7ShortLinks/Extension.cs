@@ -27,22 +27,21 @@ public static class Extension
 
         }).WithTags("ShortUrl");
 
-        endpoints.MapGet("/short/list/json", (HttpContext context) =>
+        endpoints.MapGet("/short/list/noAuth/json", (HttpContext context) =>
         {
-            ShortLinksData[] data;
-            if (context.User?.Identity?.IsAuthenticated == true)
-            {
-
-                var nameUser = context.User.Identity.Name ?? "";
-                data = links.From(nameUser);
-            }
-            else
-            {
-                data = links.NoUser();
-            }
+            ShortLinksData[] data= links.NoUser();            
             context.Response.WriteAsJsonAsync(data);
 
         }).WithTags("ShortUrl");
+
+        endpoints.MapGet("/short/list/auth/json", (HttpContext context) =>
+        {
+            var nameUser = context.User?.Identity?.Name ?? "";
+            ShortLinksData[] data = links.From(nameUser);            
+            context.Response.WriteAsJsonAsync(data);
+
+        }).RequireAuthorization().WithTags("ShortUrl");
+
 
         endpoints.MapGet("/short/add/{url:alpha}/", (HttpContext context,string url) =>
         {
