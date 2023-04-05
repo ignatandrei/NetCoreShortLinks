@@ -1,10 +1,9 @@
-name: .NET
+name: Build Nuget
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: ['main']
+    paths: ['src/**']
   workflow_dispatch:
 
 jobs:
@@ -14,6 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
