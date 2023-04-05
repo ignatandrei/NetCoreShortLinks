@@ -49,7 +49,7 @@ public static class Extension
             ShortLinksData[] data = links.From(nameUser);            
             context.Response.WriteAsJsonAsync(data);
 
-        }).RequireAuthorization(links.opt.AuthPolicy).WithTags("ShortUrl");
+        }).WithTags("ShortUrl").RequireAuthorization(links.opt.AuthPolicy);
 
         Func<string,string, ShortLinksData> Construct = (string urlToAdd, string urlRequest) =>
         {

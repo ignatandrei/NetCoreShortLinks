@@ -32,7 +32,7 @@ public class ShortLinks
         var userLower=user.ToLowerInvariant();
         return ShortLinksData.Values
             
-            .Where(it=>it.UserName != null && it.UserName!.ToLowerInvariant() == user )
+            .Where(it=>it.UserName != null && it.UserName!.ToLowerInvariant() == userLower )
             
             .ToArray();
     }
