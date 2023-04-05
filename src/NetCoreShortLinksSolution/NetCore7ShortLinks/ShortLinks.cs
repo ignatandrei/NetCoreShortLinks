@@ -14,8 +14,8 @@ public class ShortLinks
         if (data.Url == null)
             return;
         data.ApplicationName ??= opt.AppName;
-        if(!ShortLinksData.ContainsKey(data.Url))
-            ShortLinksData.Add(data.Url,data);
+        if(!ShortLinksData.ContainsKey(data.Key()))
+            ShortLinksData.Add(data.Key(),data);
     }
     public ShortLinksData? FindShortUrl(string id)
     {
