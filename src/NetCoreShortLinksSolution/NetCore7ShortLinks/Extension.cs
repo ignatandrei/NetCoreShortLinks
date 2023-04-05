@@ -42,7 +42,7 @@ public static class Extension
             ShortLinksData[] data = links.All();
             context.Response.WriteAsJsonAsync(data);
 
-        })
+        });
         endpoints.MapGet("/short/list/auth/json", (HttpContext context) =>
         {
             var nameUser = context.User?.Identity?.Name ?? "";
